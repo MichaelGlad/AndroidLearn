@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">ActionModeTraining</string>
+    <string-array name="animals_name">
+        <item>Camel</item>
+        <item>Cat</item>
+        <item>Cow</item>
+        <item>Dog</item>
+        <item>Dolphin</item>
+        <item>Horse</item>
+        <item>Lion</item>
+        <item>Panda</item>
+        <item>Squirrel</item>
+        <item>Tiger</item>
+
+
+    </string-array>
+
+    <string-array name="animals_mail">
+        <item>camel@gmail.com</item>
+        <item>cat@gmail.com</item>
+        <item>cow@gmail.com</item>
+        <item>dog@gmail.com</item>
+        <item>dolphin@gmail.com</item>
+        <item>horse@gmail.com</item>
+        <item>lion@gmail.com</item>
+        <item>panda@gmail.com</item>
+        <item>squirrel@gmail.com</item>
+        <item>tiger@gmail.com</item>
+    </string-array>
+
+    <integer-array name="animals_images">
+    <item>@drawable/camel1</item>
+    <item>@drawable/cat1</item>
+    <item>@drawable/cow1</item>
+    <item>@drawable/dog1</item>
+    <item>@drawable/dolphin1</item>
+    <item>@drawable/horse1</item>
+    <item>@drawable/lion1</item>
+    <item>@drawable/panda1</item>
+    <item>@drawable/squirrel1</item>
+    <item>@drawable/tiger1</item>
+    </integer-array>
+
+</resources>
