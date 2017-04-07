@@ -11,21 +11,32 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnLongClickListener {
     public static final String MY_LOGS = "My_Logs";
     String[] arrayAnimalsName;
     String[] arrayAnimalsMail;
     TypedArray arrayAnimalsImage;
+    public Boolean isInActionMode =false;
 
     RecyclerView recyclerView;
     AnimalsRecyclerAdapter animalsRecyclerAdapter;
     RecyclerView.LayoutManager layoutManager;
+    TextView counterText;
 
     ArrayList<Animal> animalsList = new ArrayList<>();
+    ArrayList<Animal> selectedList = new ArrayList<>();
+    ArrayList<Animal> fullAnimalsList = new ArrayList<>();
+
+    ArrayList<Animal> deleteList = new ArrayList<>();
+    int counter =0;
+
     Animal animal;
     Toolbar toolbar;
 
@@ -49,8 +60,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         arrayAnimalsImage.recycle();
 
+        counterText = (TextView) findViewById(R.id.counter_text);
+        counterText.setVisibility(View.GONE);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        animalsRecyclerAdapter = new AnimalsRecyclerAdapter(animalsList);
+        fullAnimalsList.addAll(animalsList);
+        selectedList.addAll(fullAnimalsList);
+
+        animalsRecyclerAdapter = new AnimalsRecyclerAdapter(selectedList,this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(animalsRecyclerAdapter);
@@ -66,6 +83,33 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return true;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_delete ) {
+
+            selectedList.addAll(animalsList);
+
+            for (Animal animal : deleteList) {
+                Log.d(MY_LOGS,"Now check the " + animal.getName());
+                if (fullAnimalsList.contains(animal)) {
+                    Log.d(MY_LOGS,"DELETE THE  " + animal.getName() + "From selected");
+                    fullAnimalsList.remove(animal);
+                }
+            }
+            selectedList.clear();
+            selectedList.addAll(fullAnimalsList);
+            backToMainMode();
+
+        }
+
+        if (item.getItemId() == android.R.id.home){
+            Log.d(MY_LOGS,"Now pressed home button");
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
@@ -74,22 +118,99 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
 
-        //if (newText.isEmpty()) return false;
-
-        newText = newText.toLowerCase();
-        Log.d(MY_LOGS,"The newText is - " + newText);
-        ArrayList<Animal> newList = new ArrayList<>();
-        for (Animal animal : animalsList){
-            String name = animal.getName();
-            name =name.toLowerCase();
-            Log.d(MY_LOGS," The name of animal is - " + name);
-            if (name.contains(newText))
-                newList.add(animal);
+        Log.d(MY_LOGS,"In Search with word  - " + newText);
+        if (isInActionMode == true){
+            return false;
         }
 
-        animalsRecyclerAdapter.setFilter(newList);
+        selectedList.clear();
+        if (newText.isEmpty() ){
+            selectedList.addAll(fullAnimalsList);
+            animalsRecyclerAdapter.notifyDataSetChanged();
+            return  false;
+        }
+
+        newText = newText.toLowerCase();
+
+
+        for (Animal animal : fullAnimalsList){
+            String name = animal.getName();
+            name =name.toLowerCase();
+
+            if (name.contains(newText))
+                selectedList.add(animal);
+        }
+
+       animalsRecyclerAdapter.notifyDataSetChanged();
         return false;
     }
 
 
+    @Override
+    public boolean onLongClick(View v) {
+        isInActionMode = true;
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu(R.menu.menu_action_mode);
+        counterText.setVisibility(View.VISIBLE);
+        animalsRecyclerAdapter.notifyDataSetChanged();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isInActionMode){
+            fullAnimalsList.clear();
+            fullAnimalsList.addAll(animalsList);
+            selectedList.clear();
+            selectedList.addAll(fullAnimalsList);
+            backToMainMode();
+
+        }else {
+            super.onBackPressed();
+        }
+    }
+
+    public void backToMainMode(){
+        isInActionMode =false;
+        counterText.setVisibility(View.GONE);
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu((R.menu.menu_item));
+
+        deleteList.clear();
+        counter =0;
+
+        MenuItem menuItem = toolbar.getMenu().findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(this);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        animalsRecyclerAdapter.notifyDataSetChanged();
+
+    }
+
+    public void prepareSelection (View view, int position){
+        if (((CheckBox) view).isChecked()){
+            deleteList.add(selectedList.get(position));
+            counter++;
+            updateCounter(counter);
+        }else{
+            deleteList.remove(selectedList.get(position));
+            counter--;
+            updateCounter(counter);
+
+        }
+    }
+
+    public  void updateCounter (int counter){
+        if (counter == 0){
+            counterText.setText(" No item selected");
+        }else {
+            counterText.setText(counter + " items selescted");
+        }
+    }
 }

@@ -9,5 +9,17 @@
         app:showAsAction="always|collapseActionView"
         android:title="Search" />
 
+    <item android:id="@+id/action_share"
+        android:icon="@drawable/ic_action_share"
+        android:title="Share"
+        app:showAsAction="ifRoom"
+        />
+    <item android:id="@+id/action_setting"
+        android:icon="@drawable/ic_action_setting"
+        android:title="Setting"
+        app:showAsAction="ifRoom"
+        />
+
+
 
 </menu>
