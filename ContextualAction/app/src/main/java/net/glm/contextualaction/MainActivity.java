@@ -64,8 +64,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         counterText.setVisibility(View.GONE);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        fullAnimalsList.addAll(animalsList);
-        selectedList.addAll(fullAnimalsList);
+        for(Animal animal:animalsList){
+            fullAnimalsList.add(animal);
+            selectedList.add(animal);
+        }
 
         animalsRecyclerAdapter = new AnimalsRecyclerAdapter(selectedList,this);
         layoutManager = new LinearLayoutManager(this);
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_delete ) {
 
-            selectedList.addAll(animalsList);
+            //selectedList.addAll(fullAnimalsList);
 
             for (Animal animal : deleteList) {
                 Log.d(MY_LOGS,"Now check the " + animal.getName());
@@ -104,7 +106,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         if (item.getItemId() == android.R.id.home){
-            Log.d(MY_LOGS,"Now pressed home button");
+            selectedList.clear();
+            selectedList.addAll(fullAnimalsList);
+            backToMainMode();
         }
 
         return super.onOptionsItemSelected(item);
@@ -164,9 +168,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public void onBackPressed() {
         if (isInActionMode){
             fullAnimalsList.clear();
-            fullAnimalsList.addAll(animalsList);
             selectedList.clear();
-            selectedList.addAll(fullAnimalsList);
+            for(Animal animal:animalsList){
+                fullAnimalsList.add(animal);
+                selectedList.add(animal);
+            }
+
             backToMainMode();
 
         }else {
