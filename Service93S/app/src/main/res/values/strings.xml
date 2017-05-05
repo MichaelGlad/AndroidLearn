@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Service93S</string>
-    <string name="start">Start Service</string>
+    <string name="start">Start Inside Service</string>
+    <string name="start_out">Start Outside Service</string>
 </resources>
