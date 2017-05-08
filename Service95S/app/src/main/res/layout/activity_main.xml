@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task 1 "
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_task1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task 2 "
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_task2" />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Task 3 "
+    android:layout_marginTop="5dp"
+    android:id="@+id/tv_task3" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Task 4 "
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_task4" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start work with PendingIntent"
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_pending_intent"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start work with BroadcastReceiver"
+        android:layout_marginTop="5dp"
+        android:id="@+id/btn_broadcast_receiver"/>
+
+
+</LinearLayout>

@@ -28,12 +28,17 @@ public class OutSideService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(LOG_TAG,"My Outside Service onStartCommand");
+        Log.d(LOG_TAG,"My Outside Service onStartCommand with Flag - "+ flags);
+
         readFlags(flags);
+        if (flags ==0){
+            Intent intent1 = null;
+            intent1.getStringExtra("GO");
+        }
 
         MyRun myRun = new MyRun(startId);
         new Thread(myRun).start();
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     @Override
