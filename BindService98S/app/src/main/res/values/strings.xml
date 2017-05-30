@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BindService98S</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">Unbind</string>
+
+</resources>

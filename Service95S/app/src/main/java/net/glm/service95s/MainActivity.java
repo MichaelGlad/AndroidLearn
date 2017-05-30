@@ -3,7 +3,9 @@ package net.glm.service95s;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,9 +29,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public final static String PARAM_TIME = "time";
     public final static String PARAM_PENDING_INTENT = "pendingIntent";
     public final static String PARAM_RESULT = "result";
+    public final static String PARAM_TASK = "task";
+    public final static String PARAM_STATUS = "status";
 
-    TextView tvTask1, tvTask2, tvTask3,tvTask4;
+    public final static String BROADCAST_ACTION = " net.glm.broadcastreceiverservice";
+
+
+    TextView tvTask1, tvTask2, tvTask3, tvTask4;
     Button btnBroadcastReceiver, btnPendingIntent;
+    BroadcastReceiver broadcastReceiver;
 
 
     @Override
@@ -47,7 +55,66 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnBroadcastReceiver.setOnClickListener(this);
         btnPendingIntent.setOnClickListener(this);
 
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
 
+                String resultString = "";
+
+                int task = intent.getIntExtra(PARAM_TASK, 0);
+                int status = intent.getIntExtra(PARAM_STATUS, 0);
+                Log.d(LOG_TAG,"onReceive Broadcast: task - "+ task + ", status - " + status);
+
+
+                if (status == STATUS_START) {
+                    resultString = "start";
+                }
+
+                if (status == STATUS_FINISH) {
+                    resultString = "finish, result - " + intent.getIntExtra(PARAM_RESULT, 0);
+                }
+
+                switch (task) {
+                    case TASK1_CODE:
+                        tvTask1.setText("Task 1 " + resultString);
+                        break;
+                    case TASK2_CODE:
+                        tvTask2.setText("Task 2 " + resultString);
+                        break;
+                    case TASK3_CODE:
+                        tvTask3.setText("Task 3 " + resultString);
+                        break;
+                    case TASK4_CODE:
+                        tvTask4.setText("Task 4 " + resultString);
+                        break;
+                }
+
+                if (status == STATUS_FINISH && task == TASK3_CODE) {
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent4StartService = new Intent(MainActivity.this, BroadcastReceiverService.class);
+                    intent4StartService.putExtra(PARAM_TIME, 7)
+                            .putExtra(PARAM_TASK, TASK4_CODE);
+                    startService(intent4StartService);
+
+
+                }
+            }
+        };
+
+        IntentFilter intentFilter = new IntentFilter(BROADCAST_ACTION);
+        registerReceiver(broadcastReceiver,intentFilter);
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -78,8 +145,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
             intentInOnClick.putExtra(PARAM_TIME, 6)
                     .putExtra(PARAM_PENDING_INTENT, pendingIntent);
             startService(intentInOnClick);
+        }
 
+        if (v.getId() == R.id.btn_broadcast_receiver){
+            intentInOnClick = new Intent(this,BroadcastReceiverService.class);
+            intentInOnClick.putExtra(PARAM_TIME,14)
+                    .putExtra(PARAM_TASK,TASK1_CODE);
+            startService(intentInOnClick);
 
+            intentInOnClick = new Intent(this,BroadcastReceiverService.class);
+            intentInOnClick.putExtra(PARAM_TIME,3)
+                    .putExtra(PARAM_TASK,TASK2_CODE);
+            startService(intentInOnClick);
+
+            intentInOnClick = new Intent(this,BroadcastReceiverService.class);
+            intentInOnClick.putExtra(PARAM_TIME,6)
+                    .putExtra(PARAM_TASK,TASK3_CODE);
+            startService(intentInOnClick);
 
 
         }
@@ -92,32 +174,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         String resultString = "";
 
-        Log.d(LOG_TAG," Request code - " + requestCode + " Result code - " + resultCode);
+        Log.d(LOG_TAG, " Request code - " + requestCode + " Result code - " + resultCode);
 
-        if(resultCode == STATUS_START){
+        if (resultCode == STATUS_START) {
             resultString = "start";
         }
 
-        if(resultCode == STATUS_FINISH){
-            resultString = "finish, result - " + data.getIntExtra(PARAM_RESULT,0);
+        if (resultCode == STATUS_FINISH) {
+            resultString = "finish, result - " + data.getIntExtra(PARAM_RESULT, 0);
         }
 
-        switch (requestCode){
+        switch (requestCode) {
             case TASK1_CODE:
-                tvTask1.setText("Task 1 "+resultString);
+                tvTask1.setText("Task 1 " + resultString);
                 break;
             case TASK2_CODE:
-                tvTask2.setText("Task 2 "+resultString);
+                tvTask2.setText("Task 2 " + resultString);
                 break;
             case TASK3_CODE:
-                tvTask3.setText("Task 3 "+resultString);
+                tvTask3.setText("Task 3 " + resultString);
                 break;
             case TASK4_CODE:
-                tvTask4.setText("Task 4 "+resultString);
+                tvTask4.setText("Task 4 " + resultString);
                 break;
         }
 
-        if(resultCode == STATUS_FINISH && requestCode == TASK3_CODE){
+        if (resultCode == STATUS_FINISH && requestCode == TASK3_CODE) {
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
