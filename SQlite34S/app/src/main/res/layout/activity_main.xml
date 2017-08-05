@@ -38,6 +38,30 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:gravity="left|center"
+            android:text="Group :" />
+
+        <EditText
+            android:id="@+id/etGroup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:maxLines="1">
+
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:gravity="left|center"
             android:text="Catalog number :" />
 
         <EditText
@@ -87,6 +111,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Read" />
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update" />
 
         <Button
             android:id="@+id/btnDelete"
@@ -95,6 +125,27 @@
             android:layout_weight="1"
             android:text="Delete" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Group" />
+
+        <Button
+            android:id="@+id/btnSum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sum of group" />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>

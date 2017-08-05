@@ -15,11 +15,12 @@ public class DBHelper extends SQLiteOpenHelper{
     final String PRODUCT_TABLE = "productTable";
     final String LOG_TAG = "myLogs";
     final String PRODUCT_NAME = "name";
+    final String GROUP = "prodGroup";
     final String MAKAT = "makat";
     final String PRICE = "price";
 
     public DBHelper(Context context) {
-        super(context, "myDB",null, 1);
+        super(context, "myDB9",null, 1);
         Log.d(LOG_TAG,"In DBHelper Constractor");
     }
 
@@ -27,15 +28,19 @@ public class DBHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG,"In DBHelper onCreate");
         db.execSQL("create table " + PRODUCT_TABLE + " ("
-                   + ID + " integer primary key autoincrement, "
-                   + PRODUCT_NAME + " text, "
-                   + MAKAT + " text, "
-                   + PRICE + " real" + ");");
+                + ID + " integer primary key autoincrement, "
+                + PRODUCT_NAME + " text, "
+                + GROUP + " text, "
+                + MAKAT + " text, "
+                + PRICE + " real" + ");");
+
+
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d(LOG_TAG,"In DBHelper onUpgrade");
 
     }
 }
