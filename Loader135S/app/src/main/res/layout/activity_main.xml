@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.glm.loader135s.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/rgTimeFormat"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/rgTimeFormat" />
+
+    <Button
+        android:id="@+id/btnGetTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_time"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/rgTimeFormat"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/rgTimeFormat"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/rgTimeFormat" />
+
+    <Button
+        android:id="@+id/btnObserver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/observer"
+        android:layout_marginTop="34dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnGetTime"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="@+id/btnGetTime"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/btnGetTime"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <RadioGroup
+        android:id="@+id/rgTimeFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime">
+
+        <RadioButton
+            android:id="@+id/rbShort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/format_short" />
+
+        <RadioButton
+            android:id="@+id/rbLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/format_long" />
+    </RadioGroup>
+
+
+</android.support.constraint.ConstraintLayout>
