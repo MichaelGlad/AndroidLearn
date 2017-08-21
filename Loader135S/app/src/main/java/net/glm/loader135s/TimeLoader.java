@@ -69,7 +69,8 @@ public class TimeLoader extends Loader<String> {
     }
 
     @Override
-    protected void onReset() {
+    protected void onReset() {  // Destroy Loadre Call when call onDestroy in Activity or fragment
+        //Not called when change orientation
         super.onReset();
         Log.d(LOG_TAG,hashCode() + "  -onReset");
     }

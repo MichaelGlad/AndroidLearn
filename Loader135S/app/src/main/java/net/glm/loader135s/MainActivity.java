@@ -1,16 +1,36 @@
 package net.glm.loader135s;
 
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
+import android.app.Activity;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+public class MainActivity extends AppCompatActivity implements LoaderCallbacks<String> {
+
+
+    final String LOG_TAG = "myLogs";
+    static final int LOADER_TIME_ID = 1;
+
+    TextView tvTime;
+    RadioGroup rgTimeFormat;
+    static int lastCheckedId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvTime = (TextView) findViewById(R.id.tvTime);
+        rgTimeFormat = (RadioGroup) findViewById(R.id.rgTimeFormat);
+
+        Bundle bndl = new Bundle();
+        bndl.putString(TimeLoader.ARGS_TIME_FORMAT, getTimeFormat());
+        getLoaderManager().initLoader(LOADER_TIME_ID, bndl, this);
+        lastCheckedId = rgTimeFormat.getCheckedRadioButtonId();
     }
 
     @Override
@@ -25,6 +45,37 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<String> loader) {
+        Log.d(LOG_TAG, "onLoaderReset for loader " + loader.hashCode());
+    }
 
+    public void getTimeClick(View v) {
+        Loader<String> loader;
+        int id = rgTimeFormat.getCheckedRadioButtonId();
+        if (id == lastCheckedId) {
+            loader = getLoaderManager().getLoader(LOADER_TIME_ID);
+        } else {
+            Bundle bndl = new Bundle();
+            bndl.putString(TimeLoader.ARGS_TIME_FORMAT, getTimeFormat());
+            loader = getLoaderManager().restartLoader(LOADER_TIME_ID, bndl,
+                    this);
+            lastCheckedId = id;
+        }
+        loader.forceLoad();
+    }
+
+    String getTimeFormat() {
+        String result = TimeLoader.TIME_FORMAT_SHORT;
+        switch (rgTimeFormat.getCheckedRadioButtonId()) {
+            case R.id.rbShort:
+                result = TimeLoader.TIME_FORMAT_SHORT;
+                break;
+            case R.id.rbLong:
+                result = TimeLoader.TIME_FORMAT_LONG;
+                break;
+        }
+        return result;
+    }
+
+    public void observerClick(View v) {
     }
 }
