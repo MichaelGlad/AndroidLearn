@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         GitHubClient client = retrofit.create(GitHubClient.class);
-        Call<List<GitHubRepo>> call = client.repositorsForUser("fs-opensource");
+        Call<List<GitHubRepo>> call = client.repositorsForUser("MichaelGlad");
 
         call.enqueue(new Callback<List<GitHubRepo>>() {
             @Override
