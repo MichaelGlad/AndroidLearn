@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RetrofitTest2</string>
+    <string name="your_full_name">Your full Name</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_age">Your Age</string>
+    <string name="bring_fuel">Bring Fuel</string>
+    <string name="repair_tair">Repair Tair</string>
+    <string name="accept">Accept</string>
+    <string name="what_do_you_know">What do You know</string>
+</resources>

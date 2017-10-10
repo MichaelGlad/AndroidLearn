@@ -121,7 +121,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         PendingIntent pendingIntent;
         Intent intentInOnClick;
-        BroadcastReceiver broadcastReceiver;
 
         if (v.getId() == R.id.btn_pending_intent) {
 
