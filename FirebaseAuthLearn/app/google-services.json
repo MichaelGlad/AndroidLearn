@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "515701756589",
+    "firebase_url": "https://fir-authlearn-d039e.firebaseio.com",
+    "project_id": "fir-authlearn-d039e",
+    "storage_bucket": "fir-authlearn-d039e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515701756589:android:a06ef3c408de6a5b",
+        "android_client_info": {
+          "package_name": "net.glm.firebaseauthlearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515701756589-uk07h0q95c6o1bhq6i56a1b1el42l3tq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.glm.firebaseauthlearn",
+            "certificate_hash": "ba33fb81f4cb1297b012950fbd6e2342b2363cab"
+          }
+        },
+        {
+          "client_id": "515701756589-e85p1ckhcqhdt17m0u1mgpptcrnv20vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfmogVrZKKBj6JYosN6eY4gEuobNjsRWI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515701756589-e85p1ckhcqhdt17m0u1mgpptcrnv20vr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

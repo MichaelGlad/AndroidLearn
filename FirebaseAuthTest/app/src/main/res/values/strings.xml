@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FirebaseAuthTest</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="result">Result</string>
+    <string name="done">Done</string>
+
+
+
+</resources>
