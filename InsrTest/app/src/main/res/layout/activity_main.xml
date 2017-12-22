@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.glm.insttest.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- top toolbar -->
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/constrainlayout_top">
+            <include layout="@layout/layout_top_tabs"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <!-- Middle section (body)  -->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constrainlayout_center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <include layout="@layout/layout_center_viewpager" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <!-- bottom navigation -->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constrainlayout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_bottom_navigation_view" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

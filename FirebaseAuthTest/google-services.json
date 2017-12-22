@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "740719231068",
+    "firebase_url": "https://fir-authtest-fc4a9.firebaseio.com",
+    "project_id": "fir-authtest-fc4a9",
+    "storage_bucket": "fir-authtest-fc4a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740719231068:android:af2855dcda79da77",
+        "android_client_info": {
+          "package_name": "net.glm.firebaseauthtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740719231068-dqv5kpvsh57fc48bv5hdgspetl8ipto8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTH8RaaYqJ_lq4lYr8dgSB7et_-UpztlY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
