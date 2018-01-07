@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InstagramTest</string>
+    <string name="get_access_token">Get Access Token</string>
 </resources>

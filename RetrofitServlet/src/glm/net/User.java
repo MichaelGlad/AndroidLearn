@@ -10,7 +10,6 @@ public class User {
     private String email;
     private int age;
     private Boolean isBringFuel;
-    private Boolean isRepairFlatTire;
     private Integer id;
 
     public User(String fullName, String email, int age) {
@@ -51,14 +50,6 @@ public class User {
         isBringFuel = bringFuel;
     }
 
-    public Boolean getRepairFlatTire() {
-        return isRepairFlatTire;
-    }
-
-    public void setRepairFlatTire(Boolean repairFlatTire) {
-        this.isRepairFlatTire = repairFlatTire;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -66,4 +57,6 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }

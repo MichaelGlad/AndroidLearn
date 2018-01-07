@@ -22,17 +22,21 @@ public class RetrofitServlet extends HttpServlet {
     public static final String FULLNAME = "fullName";
     public static final String EMAIL = "email";
     public static final String AGE = "age";
+    public static final String IS_BRING_FUEL = "isBringFuel";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        System.out.println("Samething Start work");
 
         InputStream inputStream = request.getInputStream();
         byte[] buffer = new byte[256];
 
+
         int actuallyRead;
         StringBuilder stringBuilder = new StringBuilder();
-        while ((actuallyRead=inputStream.read(buffer)) != -1){
+        while ((actuallyRead = inputStream.read(buffer)) != -1) {
 
-         stringBuilder = stringBuilder.append(new String(buffer, 0, actuallyRead));
+            stringBuilder = stringBuilder.append(new String(buffer, 0, actuallyRead));
 
         }
 
@@ -43,12 +47,14 @@ public class RetrofitServlet extends HttpServlet {
 
 //            Gson myGson = new Gson();
 //            User myUser = myGson.fromJson(jsonRequestObject.toString(),User.class);
+            if(jsonRequestObject.has(IS_BRING_FUEL)){
+
+                myUser.setBringFuel(jsonRequestObject.getBoolean(IS_BRING_FUEL));
+
+            } else {myUser.setBringFuel(false);}
+
             System.out.println("FullName: " + myUser.getFullName() + " Bring Fuel: " + myUser.getIsBringFuel());
             myUser.setId(Integer.valueOf(myUser.getAge() * 10));
-//            if (myUser.getRepairFlatTire() == null) myUser.setRepairFlatTire(false);
-//            if (myUser.getIsBringFuel() == null) myUser.setBringFuel(false);
-
-
 
 
             JSONObject jsonResponseObject = new JSONObject(myUser);

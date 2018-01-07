@@ -11,6 +11,7 @@ import retrofit2.http.POST;
  */
 
 public interface UserClient {
-    @POST("user")
+
+    @POST("RetrofitServlet")
     Call<User> createAccount (@Body User user);
 }

@@ -14,6 +14,10 @@ public class User {
     private Boolean isRepairFlatTire;
     private Integer id;
 
+    public User(){
+
+    }
+
     public User(String fullName, String email, int age) {
         this.fullName = fullName;
         this.email = email;
@@ -66,6 +70,16 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User is - "+ getFullName() + " Email - " + getEmail();
+    }
+
+
+    public String toStringID() {
+        return "User is - "+ getFullName() + " Email - " + getEmail()+ " ID - " + getId();
     }
 }
 
