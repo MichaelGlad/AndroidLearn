@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Michael on 13/08/2017.
  */
 
-public class TimeLoader extends Loader<String> {
+public class TimeLoader extends android.content.Loader <String> {
     final String LOG_TAG = "myLogs";
     final int PAUSE = 5;
 
@@ -69,7 +69,7 @@ public class TimeLoader extends Loader<String> {
     }
 
     @Override
-    protected void onReset() {  // Destroy Loadre Call when call onDestroy in Activity or fragment
+    protected void onReset() {  // Destroy Loader Call when call onDestroy in Activity or fragment
         //Not called when change orientation
         super.onReset();
         Log.d(LOG_TAG,hashCode() + "  -onReset");

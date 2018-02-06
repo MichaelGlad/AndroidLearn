@@ -9,5 +9,10 @@ public class Address {
     String street;
     String HouseNumber;
     String city;
-    String country;
+
+    public Address(String street, String houseNumber, String city) {
+        this.street = street;
+        HouseNumber = houseNumber;
+        this.city = city;
+    }
 }

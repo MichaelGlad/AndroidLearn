@@ -1,6 +1,5 @@
 package net.glm.loader135s;
 
-import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +34,19 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<S
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return null;
+        TimeLoader loader = null;
+        if (id == LOADER_TIME_ID) {
+            loader = new TimeLoader(this, args);
+            Log.d(LOG_TAG, "onCreateLoader: " + loader.hashCode());
+        }
+        return loader;
     }
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
+        Log.d(LOG_TAG, "onLoadFinished for loader " + loader.hashCode()
+                + ", result = " + data);
+        tvTime.setText(data);
 
     }
 
