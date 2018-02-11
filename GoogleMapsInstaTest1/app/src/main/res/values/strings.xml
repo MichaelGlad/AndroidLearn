@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GoogleMapsInstaTest1</string>
+    <string name="google_maps_api_key">AIzaSyAwsSW8nMNK000YB6YetOsSGzrpzrC_K8g</string>
+    <string name="title_activity_map">MapActivity</string>
+</resources>
