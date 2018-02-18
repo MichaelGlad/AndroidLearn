@@ -1,9 +1,8 @@
-package net.glm.location1;
+package net.glm.activityrecognition;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.app.Service;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -30,11 +29,10 @@ public class MainActivity extends AppCompatActivity implements
     private final int MY_PERMISSION_LOCATION = 102;
     private Boolean permissionIsGranted = false;
 
-    private TextView tvLatitude;
-    private TextView tvLongitude;
+    private TextView tvActivities;
     private Button btnRequestUpdate;
     private Button btnRemoveUpdate;
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApiClient activitiesGoogleApiClient;
     private LocationRequest mLocationRequest;
 
 
@@ -43,44 +41,33 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvLatitude = findViewById(R.id.tv_latitude);
-        tvLongitude = findViewById(R.id.tv_longitude);
+        tvActivities = findViewById(R.id.tv_activities);
         btnRequestUpdate = findViewById(R.id.btn_request_activity_update);
         btnRemoveUpdate = findViewById(R.id.btn_remove_activity_update);
 
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(LocationServices.API)
+        activitiesGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(ActivityRecognition.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
-
+        activitiesGoogleApiClient.connect();
     }
 
     @Override
     protected void onStop() {
-        mGoogleApiClient.disconnect();
+        activitiesGoogleApiClient.disconnect();
         super.onStop();
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
-        mLocationRequest = new LocationRequest()
-                .setInterval(1000)
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        if (checkPermission()) {
-
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
 
     }
 

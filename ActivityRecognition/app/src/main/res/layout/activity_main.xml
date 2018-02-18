@@ -4,59 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.glm.location1.MainActivity">
+    tools:context="net.glm.activityrecognition.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_location"
+        android:text="@string/activities_show"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.101"
-        android:id="@+id/tv_location" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/latitude"
-        android:textSize="20sp"
-        android:id="@+id/tv_latitude"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/longitude"
-        android:textSize="20sp"
-        android:id="@+id/tv_longitude"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_latitude"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_latitude" />
+        android:id="@+id/tv_activities" />
 
     <Button
         android:id="@+id/btn_request_activity_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Button"
+        android:text="@string/request_activity_update"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_longitude" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_activities" />
 
     <Button
         android:id="@+id/btn_remove_activity_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Button"
+        android:text="@string/remove_activity_update"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_request_activity_update" />
