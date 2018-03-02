@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class DetectedActivitiesIntentService extends IntentService {
 
-    protected static final String TAG = "detection_is";
+    protected static final String LOG_TAG = "DAIntentService";
 
     public DetectedActivitiesIntentService() {
-        super(TAG);
+        super(LOG_TAG);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class DetectedActivitiesIntentService extends IntentService {
 
         ArrayList<DetectedActivity> detectedActivities = (ArrayList) result.getProbableActivities();
 
-        Log.d(TAG," activities detected");
+        Log.d(LOG_TAG,"  - onHadleIntent  activities detected");
 
         localIntent.putExtra(Constants.ACTIVITY_EXTRA, detectedActivities);
         LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
