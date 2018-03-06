@@ -1,52 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/card">
+        android:padding="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/camel1" />
+
+        <TextView
+            android:id="@+id/txtAnimalsName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/image"
+            android:text=" Animal Name"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/image"
-                    android:src="@drawable/camel1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Animal Name"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/image"
-                    android:layout_alignParentTop="true"
-                    android:textSize="20sp"
-                    android:id="@+id/txtAnimalsName" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Animal Mail"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/image"
-                    android:layout_below="@+id/txtAnimalsName"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:id="@+id/txtAnimalsMail"
-                    />
+        <TextView
+            android:id="@+id/txtAnimalsMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAnimalsName"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/image"
+            android:text=" Animal Mail"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
+    </RelativeLayout>
 
-        </RelativeLayout>
+</android.support.v7.widget.CardView>
 
-    </android.support.v7.widget.CardView>
-
-</LinearLayout>

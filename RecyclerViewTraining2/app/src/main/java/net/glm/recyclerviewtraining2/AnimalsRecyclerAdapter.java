@@ -23,18 +23,18 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
     public static final String NAME = "name";
     public static final String MAIL = "mail";
     ArrayList<Animal> animalArrayList = new ArrayList<>();
-    Context insideAdapterContext;
 
-    public AnimalsRecyclerAdapter(ArrayList<Animal> animalArrayList, Context insideAdapterContext) {
+
+    public AnimalsRecyclerAdapter(ArrayList<Animal> animalArrayList) {
         this.animalArrayList = animalArrayList;
-        this.insideAdapterContext = insideAdapterContext;
+
 
     }
 
     @Override
     public AnimalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout,parent,false);
-        AnimalViewHolder animalViewHolder = new AnimalViewHolder(view,animalArrayList,insideAdapterContext);
+        AnimalViewHolder animalViewHolder = new AnimalViewHolder(view,animalArrayList,parent.getContext());
         return animalViewHolder;
     }
 
@@ -58,13 +58,13 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
         ImageView image;
         TextView animalsName,animalsMail;
         ArrayList<Animal> animalsInHolder;
-        Context context;
+        Context parentContext;
 
         public AnimalViewHolder(View itemView,ArrayList<Animal> animalsInHolder, Context context) {
             super(itemView);
 
             this.animalsInHolder = animalsInHolder;
-            this.context = context;
+            this.parentContext = context;
             itemView.setOnClickListener(this);
             image = (ImageView) itemView.findViewById(R.id.image);
             animalsName = (TextView) itemView.findViewById(R.id.txtAnimalsName);
@@ -77,11 +77,11 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
         public void onClick(View v) {
             int position = getAdapterPosition();
               Animal animal = animalsInHolder.get(position);
-            Intent intent = new Intent (context,AnimalDetails.class);
+            Intent intent = new Intent (parentContext,AnimalDetails.class);
             intent.putExtra(IMAGE_ID,animal.getImage());
             intent.putExtra(NAME,animal.getName());
             intent.putExtra(MAIL,animal.getMail());
-            context.startActivity(intent);
+            parentContext.startActivity(intent);
 
 
 

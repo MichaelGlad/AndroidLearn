@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
         images.recycle();
 
-        adapter = new AnimalsRecyclerAdapter(animalsArrayList,this);
+        adapter = new AnimalsRecyclerAdapter(animalsArrayList);
         layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(layoutManager);
