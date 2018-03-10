@@ -1,8 +1,12 @@
 package net.glm.recyclerviewtraining2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -33,8 +37,8 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
 
     @Override
     public AnimalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout,parent,false);
-        AnimalViewHolder animalViewHolder = new AnimalViewHolder(view,animalArrayList,parent.getContext());
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout, parent, false);
+        AnimalViewHolder animalViewHolder = new AnimalViewHolder(view, animalArrayList, parent.getContext());
         return animalViewHolder;
     }
 
@@ -43,7 +47,6 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
         holder.image.setImageResource(animalArrayList.get(position).getImage());
         holder.animalsName.setText(animalArrayList.get(position).getName());
         holder.animalsMail.setText(animalArrayList.get(position).getMail());
-
 
 
     }
@@ -56,11 +59,11 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
     public static class AnimalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView image;
-        TextView animalsName,animalsMail;
+        TextView animalsName, animalsMail;
         ArrayList<Animal> animalsInHolder;
         Context parentContext;
 
-        public AnimalViewHolder(View itemView,ArrayList<Animal> animalsInHolder, Context context) {
+        public AnimalViewHolder(View itemView, ArrayList<Animal> animalsInHolder, Context context) {
             super(itemView);
 
             this.animalsInHolder = animalsInHolder;
@@ -72,17 +75,24 @@ public class AnimalsRecyclerAdapter extends RecyclerView.Adapter<AnimalsRecycler
         }
 
 
-
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-              Animal animal = animalsInHolder.get(position);
-            Intent intent = new Intent (parentContext,AnimalDetails.class);
-            intent.putExtra(IMAGE_ID,animal.getImage());
-            intent.putExtra(NAME,animal.getName());
-            intent.putExtra(MAIL,animal.getMail());
-            parentContext.startActivity(intent);
+            Animal animal = animalsInHolder.get(position);
+            Intent intent = new Intent(parentContext, AnimalDetails.class);
+            intent.putExtra(IMAGE_ID, animal.getImage());
+            intent.putExtra(NAME, animal.getName());
+            intent.putExtra(MAIL, animal.getMail());
+            if (Build.VERSION.SDK_INT >= 21) {
 
+                Pair<View, String> imagePair = Pair.create((View)image, image.getTransitionName());
+                Pair<View, String> namePair = Pair.create((View)animalsName, animalsName.getTransitionName());
+                Pair<View, String> mailPair = Pair.create((View) animalsMail, animalsMail.getTransitionName());
+
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) parentContext, imagePair,namePair,mailPair);
+                parentContext.startActivity(intent, optionsCompat.toBundle());
+
+            }else parentContext.startActivity(intent);
 
 
         }

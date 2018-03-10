@@ -6,6 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        
+        <!--<item name="android:windowContentTransitions">true</item>-->
+        <!--<item name="android:windowTransitionBackgroundFadeDuration">3000</item>-->
+
+        <item name="android:windowSharedElementEnterTransition">@transition/change_bounds</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_bounds</item>
     </style>
+
+
 
 </resources>

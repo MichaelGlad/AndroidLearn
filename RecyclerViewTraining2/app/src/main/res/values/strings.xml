@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">RecyclerViewTraining2</string>
+    <string name="shared_element">Shared Element</string>
+    <string name="shared_element_name">Shared Name</string>
+    <string name="shared_element_mail">Shared Mail</string>
 
 
     <string-array name="animals_name">

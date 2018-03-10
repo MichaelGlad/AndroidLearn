@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/cl_main"
     tools:context="net.glm.transitiondemo.MainActivity">
 
     <Button
@@ -13,6 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:text="First"
+        android:background="@color/colorRed_500"
         app:layout_constraintBottom_toTopOf="@+id/btn_third"
         app:layout_constraintEnd_toStartOf="@+id/btn_second"
         app:layout_constraintHorizontal_bias="0.5"
@@ -29,6 +31,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="120dp"
         android:text="Second"
+        android:background="@color/colorPurple_500"
         app:layout_constraintBottom_toTopOf="@+id/btn_fourth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -42,12 +45,14 @@
         android:layout_marginBottom="120dp"
         android:layout_marginStart="8dp"
         android:text="Third"
+        android:background="@color/colorLightGreen_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_fourth"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_first" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_first"
+        android:transitionName="@string/transition_view"/>
 
     <Button
         android:id="@+id/btn_fourth"
@@ -57,6 +62,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="32dp"
         android:text="Fourth"
+        android:background="@color/colorYellow_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

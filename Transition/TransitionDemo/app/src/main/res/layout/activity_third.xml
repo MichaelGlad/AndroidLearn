@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.glm.transitiondemo.SecondActivity">
+    tools:context="net.glm.transitiondemo.ThirdActivity">
 
     <Button
         android:id="@+id/btn_main_second_activity"
@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="Main Second Activity"
-        android:background="@color/colorPurple_500"
+        android:text="Third"
+        android:background="@color/colorLightGreen_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:transitionName="@string/transition_view"/>
+
 </android.support.constraint.ConstraintLayout>

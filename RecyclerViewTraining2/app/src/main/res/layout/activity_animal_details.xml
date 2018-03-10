@@ -1,33 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <ImageView
+        android:id="@+id/datails_image"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:id="@+id/datails_image"
-        android:src="@drawable/camel1"
         android:layout_gravity="center"
-        android:padding="2dp"/>
-    <TextView
+        android:padding="2dp"
+        android:src="@drawable/camel1"
+        android:transitionName="@string/shared_element" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_details_name"
-        android:text="Animal Name : Camel"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:gravity="center"/>
-    <TextView
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="80dp"
+            android:gravity="left"
+            android:text="Animal Name : "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="right"
+            android:text="Camel"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:transitionName="@string/shared_element_name"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_details_mail"
-        android:text="Animal email : Camel@gmail.com"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:gravity="center"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="80dp"
+            android:gravity="left"
+            android:text="Animal Mail : "
+            android:textSize="16dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_details_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="right"
+            android:text="Camel@gmail.com"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:transitionName="@string/shared_element_mail"/>
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
