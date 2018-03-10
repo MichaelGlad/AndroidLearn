@@ -25,6 +25,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/image"
             android:text=" Animal Name"
+            android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
             android:transitionName="@string/shared_element_name"/>/>
@@ -38,6 +39,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/image"
             android:text=" Animal Mail"
+            android:gravity="center"
             android:textSize="16sp"
             android:textStyle="bold"
             android:transitionName="@string/shared_element_mail"/>

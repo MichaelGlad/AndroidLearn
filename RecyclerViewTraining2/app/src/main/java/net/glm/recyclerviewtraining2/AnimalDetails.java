@@ -19,8 +19,8 @@ public class AnimalDetails extends AppCompatActivity {
         setContentView(R.layout.activity_animal_details);
 
         imageView = (ImageView)findViewById(R.id.datails_image);
-        txtName = (TextView) findViewById(R.id.txt_details_name);
-        txtEmail = (TextView) findViewById(R.id.txt_details_mail);
+        txtName = (TextView) findViewById(R.id.tv_details_name);
+        txtEmail = (TextView) findViewById(R.id.tv_details_mail);
 
         imageView.setImageResource(getIntent().getIntExtra(AnimalsRecyclerAdapter.IMAGE_ID,00));
         txtName.setText(getIntent().getStringExtra(AnimalsRecyclerAdapter.NAME));
