@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DataBindingExample</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="hint_first_name_tv">Here will be First Name</string>
+    <string name="hint_last_name_tv">Here will be Last Name</string>
+    <string name="done">done</string>
+</resources>

@@ -7,6 +7,8 @@
     android:id="@+id/cl_main"
     tools:context="net.glm.transitiondemo.MainActivity">
 
+
+
     <Button
         android:id="@+id/btn_first"
         android:layout_width="wrap_content"
@@ -67,6 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_third"
-        app:layout_constraintTop_toBottomOf="@+id/btn_second" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_second"
+        android:transitionName="@string/transition_fourth_button"/>
 
 </android.support.constraint.ConstraintLayout>

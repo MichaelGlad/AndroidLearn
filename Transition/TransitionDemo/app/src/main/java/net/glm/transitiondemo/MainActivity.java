@@ -12,6 +12,7 @@ import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String LOG_TAG = "MainActivity LOG";
+    private static final String LOG_TAG = "MY_LOGS";
 
     private Button btnFirst, btnSecond, btnThird, btnFourth;
     private ViewGroup rootView;
@@ -50,10 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void toggleVIsiblity (View... views){
+    private void toggleVisablity (int visability, View... views){
+
+        Log.d(LOG_TAG,"In toggleVisability - " + visability);
         if (views != null){
             for (View currentView : views){
-                currentView.setVisibility(currentView.getVisibility() == View.VISIBLE? View.INVISIBLE : View.VISIBLE);
+                currentView.setVisibility(visability);
             }
         }
     }
@@ -66,24 +69,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             switch (viewStateTransition) {
                 case 0:
+                    Log.d(LOG_TAG," ZERO " + viewStateTransition);
+                    if(btnFirst.getVisibility() == View.INVISIBLE){
+                        toggleVisablity(View.VISIBLE,btnFirst,btnSecond,btnThird,btnFourth);
+                    }
                     break;
                 case 1:
+                    Log.d(LOG_TAG," First button return " + viewStateTransition);
                     viewStateTransition = 0;
                     TransitionManager.beginDelayedTransition(rootView, new Fade().setDuration(1000));
-                    toggleVIsiblity(btnFirst,btnSecond,btnThird,btnFourth);
+                    toggleVisablity(View.VISIBLE,btnFirst,btnSecond,btnThird,btnFourth);
                     break;
 
                 case 2:
+                    Log.d(LOG_TAG," Second button return " + viewStateTransition);
                     viewStateTransition = 0;
                     TransitionManager.beginDelayedTransition(rootView, new Slide(Gravity.TOP).setDuration(1000));
-                    toggleVIsiblity(btnFirst,btnSecond,btnThird,btnFourth);
+                    toggleVisablity(View.VISIBLE,btnFirst,btnSecond,btnThird,btnFourth);
                     break;
                 case 3:
+                    Log.d(LOG_TAG," Third button return " + viewStateTransition);
 
                     break;
                 case 4:
+                    Log.d(LOG_TAG," Fourth button return " + viewStateTransition);
                     break;
                 default:
+                    Log.d(LOG_TAG," Deffault pressed " + viewStateTransition);
                     break;
 
             }
@@ -93,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (viewId == R.id.btn_first) {
             if (btnFirst.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(rootView, new Fade().setDuration(1000));
-                toggleVIsiblity(btnFirst,btnSecond,btnThird,btnFourth);
+                toggleVisablity(View.INVISIBLE,btnFirst,btnSecond,btnThird,btnFourth);
                 viewStateTransition = 1;
             }
         }
@@ -101,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (viewId == R.id.btn_second) {
             if (btnSecond.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(rootView, new Slide(Gravity.LEFT).setDuration(1000));
-                toggleVIsiblity(btnFirst,btnSecond,btnThird,btnFourth);
+                toggleVisablity(View.INVISIBLE,btnFirst,btnSecond,btnThird,btnFourth);
                 viewStateTransition = 2;
             }
         }
@@ -118,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (viewId == R.id.btn_fourth) {
 
             Intent intent = new Intent(this,SecondActivity.class);
-            ActivityOptionsCompat mOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this,null);
+            String transitionName = getString(R.string.transition_fourth_button);
+            ActivityOptionsCompat mOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this,btnFourth,transitionName);
             startActivity(intent,mOptionsCompat.toBundle());
 
 

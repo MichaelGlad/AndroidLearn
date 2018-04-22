@@ -27,7 +27,8 @@ public class AnimalDetails extends AppCompatActivity {
         txtEmail.setText(getIntent().getStringExtra(AnimalsRecyclerAdapter.MAIL));
 
         if (Build.VERSION.SDK_INT >= 21){
-            getWindow().setEnterTransition(new Fade().setDuration(3000));
+            getWindow().setEnterTransition(new Fade().setDuration(2000));
+            getWindow().setAllowReturnTransitionOverlap(false);
         }
     }
 }

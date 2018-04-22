@@ -13,6 +13,7 @@
             android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerInside"
             android:src="@drawable/camel1"
             android:transitionName="@string/shared_element"/>
 

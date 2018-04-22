@@ -1,10 +1,15 @@
 package net.glm.recyclerviewtraining2;
 
 import android.content.res.TypedArray;
+import android.os.Build;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.view.Gravity;
 
 import java.util.ArrayList;
 
@@ -19,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     String[] animalsName,animalsMail;
     TypedArray images;
+
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
 
     @Override
@@ -38,10 +46,28 @@ public class MainActivity extends AppCompatActivity {
         }
         images.recycle();
 
+        toolbar = (Toolbar) findViewById(R.id.tb_main_activity);
+        toolbar.setTitle("RecyclerView Training - Main Activity");
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.colapsing_tb_layout_main_activity);
+        collapsingToolbarLayout.setTitle("Collapsing toolbar");
+
+
         adapter = new AnimalsRecyclerAdapter(animalsArrayList);
         layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            Slide slideTransition = new Slide();
+            slideTransition.setSlideEdge(Gravity.LEFT);
+            slideTransition.setDuration(1000);
+            getWindow().setReenterTransition(slideTransition);
+            getWindow().setAllowReturnTransitionOverlap(false);
+
+        }
+
     }
 }

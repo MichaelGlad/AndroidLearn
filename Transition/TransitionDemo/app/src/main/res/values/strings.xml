@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TransitionDemo</string>
     <string name="transition_view">Transition View</string>
+    <string name="transition_fourth_button">Transition Second view</string>
 </resources>
