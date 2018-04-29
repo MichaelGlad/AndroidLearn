@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RetrofitWorkAndroidAcademy</string>
+    <string name="key">8821516-e701348a212fb9a667d12762c</string>
+    <string name="unknown">Unknown</string>
+    <string name="search_button_text">Search</string>
+    <string name="number_of_hits">Number of hits</string>
+    <string name="enter_your_search">Enter Your Search</string>
+</resources>
